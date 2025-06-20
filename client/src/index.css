@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Ensure proper editor sizing */
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Monaco Editor container */
+.monaco-editor {
+  flex: 1;
+  min-height: 0; /* Fixes flexbox sizing issue */
+}
