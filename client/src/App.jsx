@@ -1,32 +1,38 @@
-import { Routes, Route } from 'react-router-dom';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { io } from 'socket.io-client';
-import { createContext, useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
-import Room from './pages/Room';
-import { SocketProvider } from './context/SocketContext';
-
-export const SocketContext = createContext(null);
+import Room from './components/Room';
 
 function App() {
-  const [socket, setSocket] = useState(null);
-
-  useEffect(() => {
-    const newSocket = io('http://localhost:3001');
-    setSocket(newSocket);
-
-    return () => newSocket.disconnect();
-  }, []);
-
   return (
-    // <Router>
-      <SocketProvider>
+    <>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/room/:roomId" element={<Room />} />
         </Routes>
-      </SocketProvider>
-    // </Router>
+      </BrowserRouter>
+      
+      {/* Global Toast Notification Container */}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        toastStyle={{
+          fontSize: '14px',
+          borderRadius: '8px',
+        }}
+      />
+    </>
   );
 }
 
