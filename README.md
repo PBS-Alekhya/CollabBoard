@@ -24,7 +24,7 @@ Resizable Layout: Code editor as the main panel, with dynamic side panels (White
 
 React.js
 
-CodeMirror (code editor)
+Monaco (code editor)
 
 Socket.IO-client
 
